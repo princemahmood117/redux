@@ -2,6 +2,7 @@
 import Count from "./Count";
 import Button from "./Button";
 
+// eslint-disable-next-line react/prop-types
 const Counter = ({count,onIncrement,onDecrement}) => {
 
     // const [count,setCount] = useState(0) 
