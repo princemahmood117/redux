@@ -30,6 +30,8 @@ const reducer = (state, action) => {
 function App() {
   const [count,dispatch] = useReducer(reducer, initialState);
 
+  console.log(count)
+
   // const [counters, setCounters] = useState(initialCounters);
 
   // // to convert an array into a single value, we use reduce
