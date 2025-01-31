@@ -28,9 +28,9 @@ const reducer = (state, action) => {
 };
 
 function App() {
-  const [count,dispatch] = useReducer(reducer, initialState);
+  const [count,dispatch] = useReducer(reducer, initialState);  // dispatch -> কোন action এর উপর বেজ করে useReducer কাজ করবে 
 
-  console.log(count)
+ 
 
   // const [counters, setCounters] = useState(initialCounters);
 
@@ -87,6 +87,7 @@ function App() {
     // </div>
 
     <div>
+      <h1>Counter from app.jsx</h1>
       <div>Count - {count}</div>
       <button onClick={()=> dispatch('increment')} className="btn border p-2" type="button">
         Increment
