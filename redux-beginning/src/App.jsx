@@ -1,53 +1,68 @@
-import {  useState } from "react";
+// import {  useState } from "react";
 import Counter from "./components/Counter";
 import Stats from "./components/Stats";
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment } from "./Features/counters/CountersSlice";
 
-const initialCounters = [
-  {
-    id: 1,
-    value: 0,
-  },
-  {
-    id: 2,
-    value: 10,
-  },
+// const initialCounters = [
+//   {
+//     id: 1,
+//     value: 0,
+//   },
+//   {
+//     id: 2,
+//     value: 10,
+//   },
 
-];
+// ];
 
 function App() {
-  const [counters, setCounters] = useState(initialCounters);
+  // const [counters, setCounters] = useState(initialCounters);
 
-  // to convert an array into a single value, we use reduce
+
+  const counters = useSelector((state)=> state.counters )
 
   const totalCount = counters.reduce((sum, current) => sum + current.value, 0);
 
+  const dispatch = useDispatch()
+
+
   const handleIncrement = (counterId) => {
-    const updatedCounters = counters.map((counter) => {
-      if (counter.id === counterId) {
-        return {
-          ...counter,
-          value: counter.value + 1,
-        };
-      } else {
-        return counter;
-      }
-    });
-    setCounters(updatedCounters);
+    dispatch(increment(counterId))
   };
 
   const handleDecrement = (counterId) => {
-    const updatedCounters = counters.map((counter) => {
-      if (counter.id === counterId) {
-        return {
-          ...counter,
-          value: counter.value - 1,
-        };
-      } else {
-        return counter;
-      }
-    });
-    setCounters(updatedCounters);
+    dispatch(decrement(counterId))
   };
+
+
+  // const handleIncrement = (counterId) => {
+  //   const updatedCounters = counters.map((counter) => {
+  //     if (counter.id === counterId) {
+  //       return {
+  //         ...counter,
+  //         value: counter.value + 1,
+  //       };
+  //     } else {
+  //       return counter;
+  //     }
+  //   });
+  //   setCounters(updatedCounters);
+  // };
+
+  // const handleDecrement = (counterId) => {
+  //   const updatedCounters = counters.map((counter) => {
+  //     if (counter.id === counterId) {
+  //       return {
+  //         ...counter,
+  //         value: counter.value - 1,
+  //       };
+  //     } else {
+  //       return counter;
+  //     }
+  //   });
+  //   setCounters(updatedCounters);
+  // };
 
   return (
     <div className="h-screen p-10 bg-gray-100 text-slate-700">
